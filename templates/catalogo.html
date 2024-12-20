@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Catálogo de Discos</title>
+    <link rel="stylesheet" href="static/catalogo.css">
+</head>
+
+<body>
+    <header>
+        <h1>Catálogo de Discos</h1>
+    </header>
+
+    <h2>Discos Disponíveis</h2>
+    <ul>
+        {% for disco in discos %}
+        <li>
+            <span><strong>{{ disco.artista }}</strong> - {{ disco.nome_album }} - R$ {{ disco.preco }}</span>
+            <form action="/add_to_cart" method="post">
+                <input type="hidden" name="disco_id" value="{{ disco.id }}">
+                <button type="submit">Adicionar ao carrinho</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if session["tipo"] == "funcionario" %}
+    <div class="action-buttons">
+        <a href="/discos"><button>Gerenciar Discos</button></a>
+        <a href="/configuracoes"><button>Configurações</button></a>
+    </div>
+    {% endif %}
+
+    <h2>Carrinho de Compras</h2>
+    <table>
+        <tr>
+            <th>Álbum</th>
+            <th>Preço</th>
+        </tr>
+        {% for disco in cart %}
+        <tr>
+            <td>{{ disco.nome_album }}</td>
+            <td>R$ {{ disco.preco }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><strong>Total:</strong> R$ {{ total }}</p>
+
+    <div class="action-buttons">
+        <form action="/clear_cart" method="GET" style="display: inline;">
+            <button type="submit">Limpar Carrinho</button>
+        </form>
+        <form action="/pagamento" method="GET" style="display: inline;">
+            <button type="submit">Pagamento</button>
+        </form>
+    </div>
+</body>
+
+</html>

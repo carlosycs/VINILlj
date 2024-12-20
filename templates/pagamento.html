@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="static/pagamento.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Página de Pagamento</h1>
+        <p>Aqui você pode preencher as informações para finalizar sua compra.</p>
+
+        <form action="/finalizar_pagamento" method="POST">
+            <label for="numero_cartao">Número do Cartão:</label>
+            <input type="text" id="numero_cartao" name="numero_cartao" required maxlength="16" placeholder="Digite o número do cartão" />
+
+            <label for="data_validade">Data de Validade:</label>
+            <input type="month" id="data_validade" name="data_validade" required />
+
+            <label for="codigo_seguranca">Código de Segurança:</label>
+            <input type="text" id="codigo_seguranca" name="codigo_seguranca" required maxlength="3" placeholder="Código de 3 dígitos" />
+
+            <button type="submit">Finalizar Pagamento</button>
+        </form>
+
+        <a href="/catalogo"><button class="voltar">Voltar ao Catálogo</button></a>
+    </div>
+</body>
+</html>

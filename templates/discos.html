@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Discos</title>
+    <link rel="stylesheet" href="static/discos.css">
+</head>
+<body>
+    <div>
+        <h1>Adicionar Novo Disco</h1>
+
+        <form action="/discos" method="POST">
+            <label for="artista">Artista:</label>
+            <input type="text" id="artista" name="artista" required>
+            <br><br>
+
+            <label for="nome_album">Nome do Álbum:</label>
+            <input type="text" id="nome_album" name="nome_album" required>
+            <br><br>
+
+            <label for="preco">Preço:</label>
+            <input type="number" step="0.01" id="preco" name="preco" required>
+            <br><br>
+
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <a href="/catalogo">Voltar ao Catálogo</a>
+    </div>
+</body>
+</html>
